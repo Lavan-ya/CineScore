@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./films.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <body>
+<div class="header">
+    <h3>Film Ratings !! </h3>
+</div>
+        <div class="body">
+            <form onsubmit="return API.login()">
+                <label>username
+                    <input type="text" id="username" autocomplete="off"></label>&nbsp &nbsp
+                    <input type="submit" value="Login" class="login">
+            </form>
+            <br><br>
+        <form onsubmit="return API.createFilm()">
+            <label>Film Title
+            <input type="text" id="add" autocomplete="off"></label><br><br>
+            <label>Ratings
+            <input type="text" id="add1" autocomplete="off"></label><br><br>
+            <input type="submit" value="CreateFilm" class="addfilm">
+        </form><br>
+        <button onclick="return API.getFilms()" class="click">GetFilms</button>
+            <table id="list" style="display: none;">
+                <thead>
+                    <th>Film</th>
+                    <th>Ratings</th>
+                </thead>
+                <tbody id="tablebody"></tbody>
+            </table>
+        </div>
+    </body>
+</html>
