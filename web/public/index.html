@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
     <script type="text/javascript" src="./films.js"></script>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <body>
-<div class="header">
-    <h3>Film Ratings !! </h3>
-</div>
-        <div class="body">
-            <form onsubmit="return API.login()">
-                <label>username
-                    <input type="text" id="username" autocomplete="off"></label>&nbsp &nbsp
-                    <input type="submit" value="Login" class="login">
-            </form>
-            <br><br>
-        <form onsubmit="return API.createFilm()">
-            <label>Film Title
-            <input type="text" id="add" autocomplete="off"></label><br><br>
-            <label>Ratings
-            <input type="text" id="add1" autocomplete="off"></label><br><br>
-            <input type="submit" value="CreateFilm" class="addfilm">
-        </form><br>
-        <button onclick="return API.getFilms()" class="click">GetFilms</button>
-            <table id="list" style="display: none;">
-                <thead>
-                    <th>Film</th>
-                    <th>Ratings</th>
-                </thead>
-                <tbody id="tablebody"></tbody>
-            </table>
-        </div>
-    </body>
+    <style>
+        * {
+  box-sizing: border-box;
+}
+        .custom-link{
+            color: black;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="./films.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">    
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-info navbar-ligth">
+            <h1>Films!!</h1>
+            <ul class="nav ml-auto"></ul>
+                <a class="nav-link navbar-light custom-link" href="film.html">Create Films</a>
+                <a class="nav-link navbar-light custom-link" href="login.html">Login</a>
+        </ul>
+    </nav>
+    <div class="container">
+    <h4>
+        <b><i>Kindly enhance our database by incorporating film ratings spanning from 1 to 5.<br> 
+            This information would be beneficial for individuals who have yet to experience the movie.</i></b></h4>
+    <img class="img-fluid" src="film.jpeg" height="0"> 
+    </div>
+</body>
+
 </html>

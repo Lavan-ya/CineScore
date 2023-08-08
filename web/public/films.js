@@ -20,6 +20,7 @@ var API = (() => {
                 }).then(resp => resp.json())
                 .then(data=>{
                     jwtToken = data.token
+                    alert(jwtToken)
                 })
                 var confirmationMessage = "Logged in successfully ";
                 alert(confirmationMessage);
@@ -43,6 +44,7 @@ var API = (() => {
         alert("Rating must be a valid number!");
     }
     else{
+        alert(jwtToken)
     //filmList.push(value);
     try{
         fetch("http://localhost:8080/api/v1/films",{
