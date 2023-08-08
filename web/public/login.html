@@ -61,19 +61,24 @@
           clear: both;
         }
         
-        @media screen and (max-width: 600px) {
-          .col-25, .col-75, input[type=submit] {
-            width: 100%;
-            margin-top: 0;
-          }
-        }
-        
         .input-align{
         text-align: center;
         }
 
         .page{
             float: right;
+        }
+
+        @media screen and (max-width: 600px) {
+          .container{
+            padding: 20px;
+            max-width: 100%;
+            margin: 0;
+          }
+          .col-25, .col-75, input[type=submit] {
+            width: 100%;
+            margin-top: 10px;
+          }
         }
 
         </style>

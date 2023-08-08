@@ -1,6 +1,5 @@
 var API = (() => {
     // create an array
-    var jwtToken;
     var login =() =>{
         const val = document.getElementById('username').value
         if(val === ""){
@@ -19,8 +18,8 @@ var API = (() => {
                     }
                 }).then(resp => resp.json())
                 .then(data=>{
-                    jwtToken = data.token
-                    alert(jwtToken)
+                    var jwtToken = data.token
+                    localStorage.setItem('jwtToken',jwtToken)
                 })
                 var confirmationMessage = "Logged in successfully ";
                 alert(confirmationMessage);
@@ -44,9 +43,9 @@ var API = (() => {
         alert("Rating must be a valid number!");
     }
     else{
-        alert(jwtToken)
     //filmList.push(value);
     try{
+        var jwtToken = localStorage.getItem('jwtToken')
         fetch("http://localhost:8080/api/v1/films",{
             method: 'POST',
             body: JSON.stringify({
