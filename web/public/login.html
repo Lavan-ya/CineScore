@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <script type="text/javascript" src="./films.js"></script>
     <style>
         * {
           box-sizing: border-box;
@@ -61,6 +60,13 @@
           clear: both;
         }
         
+        @media screen and (max-width: 600px) {
+          .col-25, .col-75, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+          }
+        }
+        
         .input-align{
         text-align: center;
         }
@@ -69,19 +75,12 @@
             float: right;
         }
 
-        @media screen and (max-width: 600px) {
-          .container{
-            padding: 20px;
-            max-width: 100%;
-            margin: 0;
-          }
-          .col-25, .col-75, input[type=submit] {
-            width: 100%;
-            margin-top: 10px;
-          }
-        }
-
         </style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <script type="text/javascript" src="./films.js"></script>
+        <link rel="stylesheet" href="/stylesheets/style.css">  
         </head>
         <body>
         
@@ -91,7 +90,7 @@
           <form onsubmit="return API.login()">
           <div class="row">
             <div class="col-25">
-              <label>User Name</label>
+              <label for="fname">User Name</label>
             </div>
             <div class="col-75">
               <input type="text" id="username" placeholder="username" autocomplete="off">
