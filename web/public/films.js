@@ -7,7 +7,7 @@ var API = (() => {
         }
         else{
             try{
-                fetch("http://localhost:8080/api/v1/login",{
+                fetch("http://192.168.1.220:8080/api/v1/login",{
                     method: 'POST',
                     body: JSON.stringify({
                         username:val
@@ -18,7 +18,7 @@ var API = (() => {
                     }
                 }).then(resp => resp.json())
                 .then(data=>{
-                    var jwtToken = data.token
+                    var jwtToken = data.token                  
                     localStorage.setItem('jwtToken',jwtToken)
                 })
                 var confirmationMessage = "Logged in successfully ";
@@ -46,7 +46,7 @@ var API = (() => {
     //filmList.push(value);
     try{
         var jwtToken = localStorage.getItem('jwtToken')
-        fetch("http://localhost:8080/api/v1/films",{
+        fetch("http://192.168.1.220:8080/api/v1/films",{
             method: 'POST',
             body: JSON.stringify({
                 name: value,
@@ -81,7 +81,7 @@ var API = (() => {
 var status = false;
    var getFilms = () => {
     try{
-        fetch("http://localhost:8080/api/v1/films",{
+        fetch("http://192.168.1.220:8080/api/v1/films",{
             method: 'GET',
             headers:{
                 'Accept':'application/json',
