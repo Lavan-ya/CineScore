@@ -1,5 +1,37 @@
 var API = (() => {
     // create an array
+
+    var updateFilms = ()=>{
+        const value = document.getElementById('add').value;
+        const rating = document.getElementById('add1').value;
+        try{
+            fetch("http://192.168.1.151:8080/api/v1/films/update",{
+                method: 'PUT',
+                body: JSON.stringify({
+                    name: value,
+                    rating : rating 
+                }),
+                headers:{
+                    'Accept':'application/json',
+                    'content-Type':'application/json'
+                }
+            }).then(resp=>{
+                    if(resp.status === 200){
+                    var confirmationMessage = "Film updated successfully";
+                    alert(confirmationMessage);
+                    }else{
+                        alert("Error in posting the values - Authorization Error 403")
+                    }    
+            })
+           }catch (e){
+            console.log(e);
+            console.log('-------------------------------');
+           }
+        document.getElementById('add').value=" ";
+        document.getElementById('add1').value=" ";
+        return false;
+    };
+
     var login =() =>{
         const val = document.getElementById('username').value
         if(val === ""){
@@ -7,7 +39,7 @@ var API = (() => {
         }
         else{
             try{
-                fetch("http://192.168.1.220:8080/api/v1/login",{
+                fetch("http://192.168.1.151:8080/api/v1/login",{
                     method: 'POST',
                     body: JSON.stringify({
                         username:val
@@ -46,7 +78,7 @@ var API = (() => {
     //filmList.push(value);
     try{
         var jwtToken = localStorage.getItem('jwtToken')
-        fetch("http://192.168.1.220:8080/api/v1/films",{
+        fetch("http://192.168.1.151:8080/api/v1/films",{
             method: 'POST',
             body: JSON.stringify({
                 name: value,
@@ -78,10 +110,11 @@ var API = (() => {
     }
     return false;
    };
-var status = false;
+
    var getFilms = () => {
+    clearData();
     try{
-        fetch("http://192.168.1.220:8080/api/v1/films",{
+        fetch("http://192.168.1.151:8080/api/v1/films",{
             method: 'GET',
             headers:{
                 'Accept':'application/json',
@@ -89,21 +122,20 @@ var status = false;
             }
         }).then(resp=>resp.json())
         .then(results=>{
-            results.forEach(data =>{
-        var filmtablelist=document.getElementById('list');
-        filmtablelist.style.display = 'block';
-        var tablebody = document.getElementById('tablebody');
-        var cell = document.createElement('td');
-        var ratingcell = document.createElement('td');
-        var row = document.createElement('tr');
-        cell.textContent=data.name;
-        console.log(data.name);
-        ratingcell.textContent=data.rating;
-        row.appendChild(cell);
-        row.appendChild(ratingcell);
-        tablebody.appendChild(row);
-        status="true"
-            });
+                results.forEach(data =>{ 
+                    var filmtablelist=document.getElementById('list');
+                    filmtablelist.style.display = 'block';
+                    var tablebody = document.getElementById('tablebody');
+                    var cell = document.createElement('td');
+                    var ratingcell = document.createElement('td');
+                    var row = document.createElement('tr');
+                    cell.textContent=data.name;
+                    console.log(data.name);
+                    ratingcell.textContent=data.rating;
+                    row.appendChild(cell);
+                    row.appendChild(ratingcell);
+                    tablebody.appendChild(row);
+                        });
         });
     }catch (e){
         console.log(e);
@@ -111,9 +143,18 @@ var status = false;
     }
     return false;
    };
+
+   function clearData(){
+    var parentElement = document.getElementById("tablebody")
+    while(parentElement.firstChild){
+        parentElement.removeChild(parentElement.firstChild)
+    }
+}
+
    return {
     createFilm,
     getFilms,
-    login
+    login,
+    updateFilms
  }
 })();

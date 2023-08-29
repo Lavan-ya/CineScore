@@ -11,7 +11,7 @@ services:
     depends_on: 
       - db
     environment:
-      - MONGO_DB_URI=mongodb://db/mydb
+      - MONGO_DB_URI=mongodb://db/mydbweb
   db:
     image: mongo
     ports:

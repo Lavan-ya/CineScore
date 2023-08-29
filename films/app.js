@@ -42,6 +42,23 @@ app.post("/api/v1/films", verifyToken, async (req,res)=>{
         res.json(savedFilm);
 });
 
+app.put("/api/v1/films/update",async(req,res)=>{
+    const name = req.body.name;
+    const rating = req.body.rating;
+
+        const updatedFilm = await Film.findOneAndUpdate(
+            { name: name },
+            { $set: { rating: rating } },
+            { new: true } 
+        );
+
+        if (!updatedFilm) {
+            return res.status(404).json({ msg: 'Film not found' });
+        }
+
+        res.json(updatedFilm);
+})
+
 app.post("/api/v1/login", (req,res)=>{
     const user = {
         username: req.body.username
